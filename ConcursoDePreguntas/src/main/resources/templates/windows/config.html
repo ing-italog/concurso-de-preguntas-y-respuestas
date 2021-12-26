@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout :: head"></head>
+
+<body class="">
+
+	<header th:replace="/layout/layout :: header"></header>
+	<div class="container text-center my-4">
+		<h1 th:text="${'&#128736;'} + ${titleConf}"></h1>
+
+		<table class="table table-striped my-5">
+			<thead>
+				<tr>
+					<th>&#128195; <b class="text-primary">Categoria</b></th>
+					<th>&#10067; <b class="text-primary">Preguntas</b></th>
+					<th>&#10004; <b class="text-success">Respuestas CORRECTA</b></th>
+					<th>&#10062; <b class="text-danger">1 Respuesta FALSA</b></th>
+					<th>&#10062; <b class="text-danger">2 Respuesta FALSA</b></th>
+					<th>&#10062; <b class="text-danger">3 Respuesta FALSA</b></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="question: ${questions}">
+				    <td th:text="${question.dificult}"></td>
+					<td th:text="${question.question}"></td>
+					<td th:text="${question.answer1}"></td>
+					<td th:text="${question.answer2}"></td>
+					<td th:text="${question.answer3}"></td>
+					<td th:text="${question.answer4}"></td>
+					<td><a class="btn btn-primary btn-sm"
+						th:href="@{/config/} + ${question.id}" th:text="'editar'"></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+
+	</div>
+
+	<footer th:replace="/layout/layout :: footer"></footer>
+
+</body>
+</html>
